@@ -28,6 +28,15 @@ function App() {
         setImages(images.filter((_, i) => i !== index))
     }
 
+    const handlePrint = () => {
+        if (images.length < 1) {
+            alert("Please upload at least one image")
+            return
+        }
+
+        window.print()
+    }
+
     return (
         <>
             <div className="h-screen bg-slate-200 overflow-y-auto">
@@ -39,21 +48,21 @@ function App() {
                     accept="image/*"
                     onChange={handleUploadChange}
                 />
-                <div className="flex gap-2 p-4 actions hide-print">
+                <div className="flex gap-3 p-4 actions hide-print">
                     <button
                         onClick={() => uploadInputRef.current?.click()}
-                        className="bg-white rounded-xl p-2 shadow-sm"
+                        className="bg-white rounded-xl px-4 font-medium py-2.5 shadow-sm"
                     >
                         upload
                     </button>
                     <button
                         onClick={() => setImages([])}
-                        className="bg-white rounded-xl p-2 shadow-sm"
+                        className="bg-white rounded-xl px-4 font-medium py-2.5 shadow-sm"
                     >
                         reset
                     </button>
                     <button
-                        className={` rounded-xl p-2 shadow-sm ${
+                        className={` rounded-xl px-4 font-medium py-2.5 shadow-sm ${
                             roundedBorder
                                 ? "bg-blue-500 text-white"
                                 : "bg-white"
@@ -61,6 +70,12 @@ function App() {
                         onClick={() => setRoundedBorder(!roundedBorder)}
                     >
                         Rounded Border
+                    </button>
+                    <button
+                        onClick={handlePrint}
+                        className="bg-teal-500 text-white rounded-xl px-4 font-medium py-2.5 shadow-sm"
+                    >
+                        Print
                     </button>
                 </div>
 
