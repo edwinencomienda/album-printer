@@ -2,8 +2,9 @@ import { useRef, useState } from "react"
 
 function App() {
     const uploadInputRef = useRef<HTMLInputElement>(null)
-
     const [images, setImages] = useState<File[]>([])
+    const [roundedBorder, setRoundedBorder] = useState(true)
+
     const handleUploadChange = () => {
         if (!uploadInputRef.current) {
             return
@@ -51,13 +52,23 @@ function App() {
                     >
                         reset
                     </button>
+                    <button
+                        className={`bg-white rounded-xl p-2 shadow-sm ${
+                            roundedBorder ? "bg-blue-500 text-white" : ""
+                        }`}
+                        onClick={() => setRoundedBorder(!roundedBorder)}
+                    >
+                        Rounded Border
+                    </button>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 p-4 max-w-[8.5in] mx-auto">
                     {images.map((image, i) => (
                         <div
                             key={i}
-                            className="aspect-[3/4] overflow-hidden relative bg-white p-2 rounded-lg border border-gray-200"
+                            className={`aspect-[3/4] overflow-hidden relative bg-white p-2 border border-gray-200 ${
+                                roundedBorder ? "rounded-lg" : ""
+                            }`}
                         >
                             <button
                                 onClick={() => handleRemove(i)}
@@ -84,7 +95,9 @@ function App() {
                                 key={`${i}-${image.name}`}
                                 src={URL.createObjectURL(image)}
                                 alt={`Preview ${i + 1}`}
-                                className="w-full h-full object-cover rounded-lg"
+                                className={`w-full h-full object-cover ${
+                                    roundedBorder ? "rounded-lg" : ""
+                                }`}
                             />
                         </div>
                     ))}
