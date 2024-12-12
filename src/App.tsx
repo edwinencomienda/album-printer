@@ -53,8 +53,10 @@ function App() {
                         reset
                     </button>
                     <button
-                        className={`bg-white rounded-xl p-2 shadow-sm ${
-                            roundedBorder ? "bg-blue-500 text-white" : ""
+                        className={` rounded-xl p-2 shadow-sm ${
+                            roundedBorder
+                                ? "bg-blue-500 text-white"
+                                : "bg-white"
                         }`}
                         onClick={() => setRoundedBorder(!roundedBorder)}
                     >
