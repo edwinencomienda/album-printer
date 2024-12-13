@@ -78,12 +78,11 @@ function App() {
                         Print
                     </button>
                 </div>
-
-                <div className="grid grid-cols-3 gap-3 p-4 max-w-[8.5in] mx-auto">
+                <div className="grid grid-cols-3 gap-3 p-4 max-w-[8.5in] w-full mx-auto">
                     {images.map((image, i) => (
                         <div
                             key={i}
-                            className={`aspect-[3/4] overflow-hidden relative bg-white p-4 border border-gray-200 ${
+                            className={`overflow-hidden relative bg-white p-4 border border-gray-200 ${
                                 roundedBorder ? "rounded-lg" : ""
                             }`}
                         >
@@ -109,10 +108,11 @@ function App() {
                             </button>
 
                             <img
+                                id={`image-${i}`}
                                 key={`${i}-${image.name}`}
                                 src={URL.createObjectURL(image)}
                                 alt={`Preview ${i + 1}`}
-                                className={`w-full h-full object-cover ${
+                                className={`w-full h-full object-cover aspect-[3/4] ${
                                     roundedBorder ? "rounded-lg" : ""
                                 }`}
                             />
