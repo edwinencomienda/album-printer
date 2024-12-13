@@ -83,7 +83,7 @@ function App() {
                     {images.map((image, i) => (
                         <div
                             key={i}
-                            className={`aspect-[3/4] overflow-hidden relative bg-white p-2 border border-gray-200 ${
+                            className={`aspect-[3/4] overflow-hidden relative bg-white p-4 border border-gray-200 ${
                                 roundedBorder ? "rounded-lg" : ""
                             }`}
                         >
